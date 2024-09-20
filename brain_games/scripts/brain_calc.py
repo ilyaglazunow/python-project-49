@@ -5,13 +5,15 @@ import prompt
 
 def main():
     name = welcome_user()
-    print('Answer "yes" if the number is even, otherwise answer "no".')
+    print('What is the result of the expression')
     counter = 0
     while counter < 3:
-        number = random.randint(1, 1000)
-        right_answer = 'yes' if not number % 2 else 'no'
-        print(f'Question: {number}')
-        player_answer = prompt.string('Your answer: ')
+        num_1 = random.randint(1, 100)
+        num_2 = random.randint(1, 100)
+        question = f"{num_1} {random.choice(['*', '+'])} {num_2}"
+        right_answer = eval(question)
+        print(f'Question: {question}')
+        player_answer = int(prompt.string('Your answer: '))
 
         if player_answer == right_answer:
             print('Correct!')
@@ -20,7 +22,7 @@ def main():
             print(f"'{player_answer}' is wrong answer ;(. Correct answer was '{right_answer}'.")
             print(f"Let's try again, {name}!")
             return
-    
+
     print(f'Congratulations, {name}')
 
 
